@@ -66,3 +66,83 @@ export function removeShowcase(req, res) {
             message: "No se pudo borrar el showcase"
         }));
 }
+
+// PUT
+export function replaceShowcase(req, res) {
+    const id = req.params.id;
+
+    const { title, summary, category, stack, demoUrl, imageUrl, clientId } = req.body;
+
+    if (!title || !summary || !category || !stack || !demoUrl || !imageUrl) {
+        return res.status(400).json({
+            message: "Faltan campos obligatorios"
+        });
+    }
+
+    if (!Array.isArray(stack)) {
+        return res.status(400).json({
+            message: "El campo stack debe ser un array"
+        });
+    }
+
+    const showcase = {
+        id: parseInt(id),
+        title,
+        summary,
+        category,
+        stack,
+        demoUrl,
+        imageUrl,
+        clientId: clientId ?? null
+    };
+
+    return service.editShowcaseById(showcase)
+        .then(showcaseEditado => {
+            if (!showcaseEditado) {
+                return res.status(404).json({
+                    message: "No se encontro el showcase"
+                });
+            }
+
+            return res.status(202).json(showcaseEditado);
+        })
+        .catch(err => res.status(500).json({
+            message: "No se pudo reemplazar el showcase"
+        }));
+}
+
+// PATCH
+export async function updateShowcase(req, res) {
+    const id = req.params.id;
+
+    const oldShowcase = await service.getShowcaseById(id);
+
+    if (!oldShowcase) {
+        return res.status(404).json({
+            message: "No se encontro el showcase"
+        });
+    }
+
+    const showcase = {
+        id: oldShowcase.id,
+        title: req.body?.title ? req.body.title : oldShowcase.title,
+        summary: req.body?.summary ? req.body.summary : oldShowcase.summary,
+        category: req.body?.category ? req.body.category : oldShowcase.category,
+        stack: req.body?.stack ? req.body.stack : oldShowcase.stack,
+        demoUrl: req.body?.demoUrl ? req.body.demoUrl : oldShowcase.demoUrl,
+        imageUrl: req.body?.imageUrl ? req.body.imageUrl : oldShowcase.imageUrl,
+        clientId: req.body?.clientId !== undefined ? req.body.clientId : oldShowcase.clientId
+    };
+
+    if (!Array.isArray(showcase.stack)) {
+        return res.status(400).json({
+            message: "El campo stack debe ser un array"
+        });
+    }
+
+    return service.editShowcaseById(showcase)
+        .then(showcaseEditado => res.status(202).json(showcaseEditado))
+        .catch(err => res.status(500).json({
+            message: "No se pudo actualizar el showcase"
+        }));
+}

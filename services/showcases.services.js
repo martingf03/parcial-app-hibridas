@@ -79,3 +79,40 @@ export async function deleteShowcase(id) {
         throw error
     }
 }
+
+export async function editShowcaseById(showcase) {
+    try {
+        const showcases = await getAllShowcases({ deleted: "all" });
+
+        const index = showcases.findIndex(item => item.id == showcase.id)
+
+        if(index === -1) {
+            return null;
+        }
+
+        const showcaseOriginal = showcases[index];
+
+        const showcaseEditado = {
+            id: showcaseOriginal.id,
+            title: showcase.title,
+            summary: showcase.summary,
+            category: showcase.category,
+            stack: showcase.stack,
+            demoUrl: showcase.demoUrl,
+            imageUrl: showcase.imageUrl,
+            clientId: showcase.clientId ?? null,
+            deleted: showcaseOriginal.deleted
+        };
+
+        showcases[index] = showcaseEditado;
+
+        await writeFile(archivo, JSON.stringify(showcases, null, 2));
+
+        return showcaseEditado;
+
+
+    } catch (error) {
+        console.error(`${error}: No se pudo editar el showcase`);
+        throw error;
+    }
+}

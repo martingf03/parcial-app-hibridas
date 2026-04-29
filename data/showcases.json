@@ -17,17 +17,16 @@
   },
   {
     "id": 2,
-    "title": "ReservaPro",
-    "summary": "Sistema web para gestionar reservas, disponibilidad horaria y datos básicos de clientes.",
-    "category": "saas",
+    "title": "ReservaPro Patch",
+    "summary": "Sistema web actualizado para reservas.",
+    "category": "tools",
     "stack": [
       "Node.js",
       "Express",
-      "MongoDB",
-      "JavaScript"
+      "MongoDB"
     ],
-    "demoUrl": "https://example.com/reservapro",
-    "imageUrl": "https://picsum.photos/seed/reservapro/400/225",
+    "demoUrl": "https://example.com/reservapro-v2",
+    "imageUrl": "https://picsum.photos/seed/reservapro-v2/400/225",
     "clientId": null,
     "deleted": false
   },
@@ -150,20 +149,5 @@
     "imageUrl": "https://picsum.photos/seed/canvas-interaction-tests/400/225",
     "clientId": null,
     "deleted": false
-  },
-  {
-    "id": 11,
-    "title": "Portfolio Admin",
-    "summary": "Panel para administrar proyectos personales.",
-    "category": "tools",
-    "stack": [
-      "Node.js",
-      "Express",
-      "MongoDB"
-    ],
-    "demoUrl": "https://example.com/portfolio-admin",
-    "imageUrl": "https://picsum.photos/seed/portfolio-admin/400/225",
-    "clientId": null,
-    "deleted": true
   }
 ]
