@@ -1,0 +1,169 @@
+[
+  {
+    "id": 1,
+    "title": "Studio Landing System",
+    "summary": "Landing page responsive para presentar servicios, casos destacados y formulario de contacto.",
+    "category": "webs",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Express"
+    ],
+    "demoUrl": "https://example.com/studio-landing",
+    "imageUrl": "https://picsum.photos/seed/studio-landing/400/225",
+    "clientId": "cliente-1",
+    "deleted": false
+  },
+  {
+    "id": 2,
+    "title": "ReservaPro",
+    "summary": "Sistema web para gestionar reservas, disponibilidad horaria y datos básicos de clientes.",
+    "category": "saas",
+    "stack": [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JavaScript"
+    ],
+    "demoUrl": "https://example.com/reservapro",
+    "imageUrl": "https://picsum.photos/seed/reservapro/400/225",
+    "clientId": null,
+    "deleted": false
+  },
+  {
+    "id": 3,
+    "title": "Mercado Local",
+    "summary": "Tienda online para catálogo de productos, detalle de ítems y flujo inicial de compra.",
+    "category": "ecommerce",
+    "stack": [
+      "React",
+      "Node.js",
+      "Express"
+    ],
+    "demoUrl": "https://example.com/mercado-local",
+    "imageUrl": "https://picsum.photos/seed/mercado-local/400/225",
+    "clientId": "cliente-2",
+    "deleted": false
+  },
+  {
+    "id": 4,
+    "title": "API Health Checker",
+    "summary": "Herramienta para monitorear endpoints, tiempos de respuesta y disponibilidad de servicios.",
+    "category": "tools",
+    "stack": [
+      "Node.js",
+      "Express",
+      "JavaScript"
+    ],
+    "demoUrl": "https://example.com/api-health-checker",
+    "imageUrl": "https://picsum.photos/seed/api-health-checker/400/225",
+    "clientId": null,
+    "deleted": false
+  },
+  {
+    "id": 5,
+    "title": "Motion Cards Lab",
+    "summary": "Experimento visual con tarjetas animadas, microinteracciones y transiciones para interfaces web.",
+    "category": "experiments",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "demoUrl": "https://example.com/motion-cards-lab",
+    "imageUrl": "https://picsum.photos/seed/motion-cards-lab/400/225",
+    "clientId": null,
+    "deleted": false
+  },
+  {
+    "id": 6,
+    "title": "Brand Commerce Kit",
+    "summary": "E-commerce modular para marcas pequeñas con catálogo, destacados y páginas de producto.",
+    "category": "ecommerce",
+    "stack": [
+      "Vue",
+      "Express",
+      "MongoDB"
+    ],
+    "demoUrl": "https://example.com/brand-commerce-kit",
+    "imageUrl": "https://picsum.photos/seed/brand-commerce-kit/400/225",
+    "clientId": "cliente-3",
+    "deleted": false
+  },
+  {
+    "id": 7,
+    "title": "Internal Docs Hub",
+    "summary": "Aplicación web para centralizar documentación interna, enlaces importantes y guías operativas.",
+    "category": "webs",
+    "stack": [
+      "React",
+      "CSS",
+      "Express"
+    ],
+    "demoUrl": "https://example.com/internal-docs-hub",
+    "imageUrl": "https://picsum.photos/seed/internal-docs-hub/400/225",
+    "clientId": "cliente-2",
+    "deleted": false
+  },
+  {
+    "id": 8,
+    "title": "Prompt Toolkit",
+    "summary": "Producto propio para guardar, clasificar y reutilizar prompts en flujos de trabajo digitales.",
+    "category": "tools",
+    "stack": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "demoUrl": "https://example.com/prompt-toolkit",
+    "imageUrl": "https://picsum.photos/seed/prompt-toolkit/400/225",
+    "clientId": null,
+    "deleted": false
+  },
+  {
+    "id": 9,
+    "title": "InvoiceFlow",
+    "summary": "SaaS para crear facturas simples, organizar clientes y consultar el estado de cobros.",
+    "category": "saas",
+    "stack": [
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    "demoUrl": "https://example.com/invoiceflow",
+    "imageUrl": "https://picsum.photos/seed/invoiceflow/400/225",
+    "clientId": null,
+    "deleted": false
+  },
+  {
+    "id": 10,
+    "title": "Canvas Interaction Tests",
+    "summary": "Serie de pruebas interactivas con canvas para explorar arrastre, partículas y animaciones.",
+    "category": "experiments",
+    "stack": [
+      "JavaScript",
+      "Canvas",
+      "CSS"
+    ],
+    "demoUrl": "https://example.com/canvas-interaction-tests",
+    "imageUrl": "https://picsum.photos/seed/canvas-interaction-tests/400/225",
+    "clientId": null,
+    "deleted": false
+  },
+  {
+    "id": 11,
+    "title": "Portfolio Admin",
+    "summary": "Panel para administrar proyectos personales.",
+    "category": "tools",
+    "stack": [
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    "demoUrl": "https://example.com/portfolio-admin",
+    "imageUrl": "https://picsum.photos/seed/portfolio-admin/400/225",
+    "clientId": null,
+    "deleted": true
+  }
+]
