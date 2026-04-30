@@ -1,7 +1,9 @@
+import "dotenv/config";
 import { MongoClient, ObjectId } from "mongodb"
-const client = new MongoClient("mongodb+srv://admin:admin@cluster0.i5t8aly.mongodb.net/");
+
+const client = new MongoClient(process.env.MONGODB_URI);
 const db = client.db("AH20232CP1");
-const showcasesColl = db.collection("showcases");
+const showcasesCollection = db.collection("showcases");
 
 export async function getAllShowcases(filter = {}) {
     try {
@@ -16,7 +18,7 @@ export async function getAllShowcases(filter = {}) {
             filterMongo.category = filter.category;
         }
 
-        return showcasesColl.find(filterMongo).toArray();
+        return showcasesCollection.find(filterMongo).toArray();
     } catch (error) {
         console.error(`${error}: No se encontro ningun caso`);
         return []
@@ -25,21 +27,22 @@ export async function getAllShowcases(filter = {}) {
 
 export async function getShowcaseById(id) {
     try {
-        const showcases = await getAllShowcases();
-        return showcases.find(showcase => showcase.id == id);
+        await client.connect();
+        return showcasesCollection.findOne({
+            _id: new ObjectId(id),
+            deleted: { $ne: true }
+        });
     } catch (error) {
         console.error(`${error}: No se encontro ningun caso`);
+        return null;
     }
 }
 
 export async function createShowcase(showcase) {
     try {
-        const showcases = await getAllShowcases();
-        const ids = showcases.map(item => item.id);
-        const maxId = Math.max(...ids);
-        const newId = maxId + 1;
+        await client.connect();
+
         const newShowcase = {
-            id: newId,
             title: showcase.title,
             summary: showcase.summary,
             category: showcase.category,
@@ -49,30 +52,40 @@ export async function createShowcase(showcase) {
             clientId: showcase.clientId ?? null,
             deleted: false
         };
-        showcases.push(newShowcase);
+        
+        const result = await showcasesCollection.insertOne(newShowcase);
 
-        await writeFile(archivo, JSON.stringify(showcases));
-        return newShowcase;
-
+        return {
+            _id: result.insertedId,
+            ...newShowcase
+        };
     } catch (error) {
         console.error(`${error}: No se pudo crear el showcase`);
+        throw error;
     }
 }
 
 export async function deleteShowcase(id) {
     try {
-        const showcases = await getAllShowcases();
-        const showcaseFound = showcases.find(showcase => showcase.id == id);
+        await client.connect();
+
+        const showcaseFound = await getShowcaseById(id);
 
         if(!showcaseFound) {
             return null;
         }
 
-        showcaseFound.deleted = true;
+        await showcasesCollection.updateOne(
+            { _id: new ObjectId(id) },
+            {
+                $set: { deleted: true }
+            }
+        );
 
-        await writeFile(archivo, JSON.stringify(showcases, null, 2));
-
-        return showcaseFound;
+        return {
+            ...showcaseFound, 
+            deleted: true
+        };
     } catch (error) {
         console.error(`${error}: No se pudo borrar el showcase`);
         throw error
@@ -81,35 +94,28 @@ export async function deleteShowcase(id) {
 
 export async function editShowcaseById(showcase) {
     try {
-        const showcases = await getAllShowcases({ deleted: "all" });
+        await client.connect();
 
-        const index = showcases.findIndex(item => item.id == showcase.id)
+        const { _id, ...showcaseSinId } = showcase;
 
-        if(index === -1) {
+        const showcaseFound = await getShowcaseById(_id);
+
+        if (!showcaseFound) {
             return null;
         }
 
-        const showcaseOriginal = showcases[index];
+        await showcasesCollection.updateOne(
+            { _id: new ObjectId(_id) },
+            {
+                $set: showcaseSinId
+            }
+        );
 
-        const showcaseEditado = {
-            id: showcaseOriginal.id,
-            title: showcase.title,
-            summary: showcase.summary,
-            category: showcase.category,
-            stack: showcase.stack,
-            demoUrl: showcase.demoUrl,
-            imageUrl: showcase.imageUrl,
-            clientId: showcase.clientId ?? null,
-            deleted: showcaseOriginal.deleted
+        return {
+            _id,
+            ...showcaseSinId,
+            deleted: showcaseFound.deleted
         };
-
-        showcases[index] = showcaseEditado;
-
-        await writeFile(archivo, JSON.stringify(showcases, null, 2));
-
-        return showcaseEditado;
-
-
     } catch (error) {
         console.error(`${error}: No se pudo editar el showcase`);
         throw error;

@@ -86,7 +86,7 @@ export function replaceShowcase(req, res) {
     }
 
     const showcase = {
-        id: parseInt(id),
+        _id: id,
         title,
         summary,
         category,
@@ -124,7 +124,7 @@ export async function updateShowcase(req, res) {
     }
 
     const showcase = {
-        id: oldShowcase.id,
+        _id: id,
         title: req.body?.title ? req.body.title : oldShowcase.title,
         summary: req.body?.summary ? req.body.summary : oldShowcase.summary,
         category: req.body?.category ? req.body.category : oldShowcase.category,
