@@ -1,23 +1,22 @@
-import { writeFile, readFile } from "fs/promises"
-
-const archivo = "./data/showcases.json"
+import { MongoClient, ObjectId } from "mongodb"
+const client = new MongoClient("mongodb+srv://admin:admin@cluster0.i5t8aly.mongodb.net/");
+const db = client.db("AH20232CP1");
+const showcasesColl = db.collection("showcases");
 
 export async function getAllShowcases(filter = {}) {
     try {
-        const rawShowcases = await readFile(archivo, "utf-8");
-        let showcases = JSON.parse(rawShowcases);
+        await client.connect();
+        const filterMongo = { deleted: { $ne: true } } 
 
-        if(filter?.deleted === "true") {
-            showcases = showcases.filter(showcase => showcase.deleted === true);
-        } else {
-            showcases = showcases.filter(showcase => showcase.deleted !== true);
+        if (filter?.deleted === "true") {
+            filterMongo.deleted = true;
         }
 
-        if(filter?.category) {
-            showcases = showcases.filter(showcase => showcase.category === filter.category)
+        if (filter?.category) {
+            filterMongo.category = filter.category;
         }
 
-        return showcases;
+        return showcasesColl.find(filterMongo).toArray();
     } catch (error) {
         console.error(`${error}: No se encontro ningun caso`);
         return []

@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "title": "Studio Landing System",
     "summary": "Landing page responsive para presentar servicios, casos destacados y formulario de contacto.",
     "category": "webs",
@@ -16,7 +15,6 @@
     "deleted": false
   },
   {
-    "id": 2,
     "title": "ReservaPro Patch",
     "summary": "Sistema web actualizado para reservas.",
     "category": "tools",
@@ -31,7 +29,6 @@
     "deleted": false
   },
   {
-    "id": 3,
     "title": "Mercado Local",
     "summary": "Tienda online para catálogo de productos, detalle de ítems y flujo inicial de compra.",
     "category": "ecommerce",
@@ -46,7 +43,6 @@
     "deleted": false
   },
   {
-    "id": 4,
     "title": "API Health Checker",
     "summary": "Herramienta para monitorear endpoints, tiempos de respuesta y disponibilidad de servicios.",
     "category": "tools",
@@ -61,7 +57,6 @@
     "deleted": false
   },
   {
-    "id": 5,
     "title": "Motion Cards Lab",
     "summary": "Experimento visual con tarjetas animadas, microinteracciones y transiciones para interfaces web.",
     "category": "experiments",
@@ -76,7 +71,6 @@
     "deleted": false
   },
   {
-    "id": 6,
     "title": "Brand Commerce Kit",
     "summary": "E-commerce modular para marcas pequeñas con catálogo, destacados y páginas de producto.",
     "category": "ecommerce",
@@ -91,7 +85,6 @@
     "deleted": false
   },
   {
-    "id": 7,
     "title": "Internal Docs Hub",
     "summary": "Aplicación web para centralizar documentación interna, enlaces importantes y guías operativas.",
     "category": "webs",
@@ -106,7 +99,6 @@
     "deleted": false
   },
   {
-    "id": 8,
     "title": "Prompt Toolkit",
     "summary": "Producto propio para guardar, clasificar y reutilizar prompts en flujos de trabajo digitales.",
     "category": "tools",
@@ -121,7 +113,6 @@
     "deleted": false
   },
   {
-    "id": 9,
     "title": "InvoiceFlow",
     "summary": "SaaS para crear facturas simples, organizar clientes y consultar el estado de cobros.",
     "category": "saas",
@@ -136,7 +127,6 @@
     "deleted": false
   },
   {
-    "id": 10,
     "title": "Canvas Interaction Tests",
     "summary": "Serie de pruebas interactivas con canvas para explorar arrastre, partículas y animaciones.",
     "category": "experiments",
