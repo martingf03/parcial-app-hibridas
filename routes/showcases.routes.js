@@ -5,6 +5,9 @@ const router = express.Router();
 
 router.get("/", controller.showHomepage);
 router.get("/section/:category", controller.showCategoryPage);
+router.get("/deleted", controller.showDeletedPage);
+router.get("/showcases/:id/url", controller.openShowcaseUrlPage);
+router.use(controller.showNotFoundPage);
 
 export default router;
 
